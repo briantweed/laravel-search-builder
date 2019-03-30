@@ -1,14 +1,14 @@
 # laravel-search-builder
 
 *Filter a model collection based on form fields using existing model scope methods*
-
----
+<br/>
 
 ### Installation
 
 ```powershell
 composer require "briantweed/laravel-search-builder"
 ```
+<br>
 
 Once installed you can publish the `config/builder.php` file using the command:
 ```powershell
