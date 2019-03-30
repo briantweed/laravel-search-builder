@@ -77,12 +77,12 @@ Note: if using the id field of a related model add the model name to the scope q
   {
     public function scopeWhereLocation($query, $value)
     {
-      return $query->where('location', '+', $value);
+      return $query->where('location', '=', $value);
     }
     
     public function scopeWhereRating($query, $value)
     {
-      return $query->where('rating', '=', $value);
+      return $query->where('rating', '>=', $value);
     }
     
     public function scopeByLocation($query, $direction = 'asc')
@@ -90,7 +90,7 @@ Note: if using the id field of a related model add the model name to the scope q
     		return $query->orderBy('location', $direction);
     }
     
-    public function scopeByRating($query, $direction = 'asc')
+    public function scopeByRating($query, $direction = 'desc')
     {
     		return $query->orderBy('rating', $direction);
     }
