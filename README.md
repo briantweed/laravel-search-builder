@@ -28,7 +28,14 @@ php artisan vendor:publish --tag="builder"
 
 ### How to Use
 
-Initialise the SearchBuilder class by passing an instance of the model you're running the query on and the request:
+Include the SearchBuilder class
+
+```php
+use briantweed\LaravelSearchBuilder\SearchBuilder;
+```
+
+
+Initialise it by passing an instance of the model you're running the query on and the request:
 
 ```php
 public function index(Request $request)
