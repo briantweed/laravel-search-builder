@@ -45,7 +45,7 @@ The `config/builder.php` contains several keywords and values that are used by *
 
 By default the `where_scope` value is `where` and should be used when naming any scope that you want **LaravelSearchBuilder** to use. For example, for a form field with the name `rating` **LaravelSearchBuilder** will look for a scope called `scopeWhereRating`.
 
-Similarly, the `sort_scope` default value is `by` and should be used when naming any scope used for sorting the query. **LaravelSearchBuilder** will look for a scope called `scopeByRating`.
+Similarly, the `sort_scope` default value is `by` and **LaravelSearchBuilder** will look for a scope called `scopeByRating`.
 
 The `sort` value needs to be the same as the sorting form field name in order for  **LaravelSearchBuilder** to recognise it as such. The same applied to the `order` value.
 
