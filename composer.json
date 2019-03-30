@@ -1,0 +1,34 @@
+{
+    "name": "briantweed/laravel-search-builder",
+    "description": "search query builder using model scopes",
+    "type": "package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Brian Tweed",
+            "email": "brtweed@outlook.com"
+        }
+    ],
+    "homepage": "https://github.com/briantweed/laravel-search-builder",
+    "keywords": ["Laravel", "LaravelSearchBuilder"],
+    "require": {
+        "illuminate/support": "~5"
+    },
+    "autoload": {
+        "psr-4": {
+            "briantweed\\LaravelSearchBuilder\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "briantweed\\LaravelSearchBuilder\\LaravelSearchBuilderServiceProvider"
+            ],
+            "aliases": {
+                "LaravelSearchBuilder": "briantweed\\LaravelSearchBuilder\\Facades\\LaravelSearchBuilder"
+            }
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
