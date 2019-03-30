@@ -21,7 +21,7 @@ e.g. if the sort field is value is `rating` **LaravelSearchBuilder** will look f
 
 ---
 
-*index.php*
+*Form*
 ```html 
 <form>
   <input type="text" name="location" value="" />
@@ -34,29 +34,29 @@ e.g. if the sort field is value is `rating` **LaravelSearchBuilder** will look f
 </form>
 ```
 
-*HotelController.php*
+*Controller*
 ```php 
-  use App/Hotel;
+  use App/Model;
   use briantweed/laravel-search-builder;
   
-  class HotelController
+  class ModelController
   {
   
     public function index(Request $request)
     {
-      $hotels = (new SearchBuilder(new Hotel, $request))->apply()
+      $results = (new SearchBuilder(new Hotel, $request))->apply()
       return view('index', [
-        'hotels' => $hotels
+        'results' => $results
       ]);
     }
     
   }
 ```
 
-*Hotel Model*
+*Model*
 ```php
 
-  class Hotel
+  class Model
   {
     public function scopeWhereLocation($query, $value)
     {
@@ -77,7 +77,5 @@ e.g. if the sort field is value is `rating` **LaravelSearchBuilder** will look f
     {
     		return $query->orderBy('rating', $direction);
     }
-    
-    
   }
 ```
