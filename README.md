@@ -2,7 +2,7 @@
 
 *Automatically create and apply a search query to a collection built using model scope methods*
 
-Filter forms can get messy. Checking which fields have been used, piecing together query snippets, and just when you've got everything working along comes another handful of fields to filter on. The code can get really messy, really quickly. One solution I've seen is to have each filter correspond to a class containing the desired query string. While this works well, the solution I've tried to implement uses one of Laravel's existing features - scopes.
+Filter forms can get messy. Checking which fields have selected, piecing together query string snippets; and just when you've got everything working along comes another handful of fields to filter on. The code can get really messy, really quickly. One solution I've seen is to have each filter correspond to a class containing the desired query string. While this works well, the solution I've tried to implement uses one of Laravel's existing features - scopes.
 
 **LaravelSearchBuilder** takes each form field name, finds the corresponding model scope and adds it to the query builder.
 
