@@ -9,7 +9,7 @@ composer require "briantweed/laravel-search-builder"
 
 ### How it works (work in progress)
 
-**LaravelSearchBuilder** uses each field name from the submitted form request to create a scope method name. If it matches an existing scope model, that scope is added to the query builder.
+**LaravelSearchBuilder** uses each field name from the submitted form request to create a scope method name. If it matches an existing scope model, that scope is added to the query builder. I have seen other solutions where each filter name corresponds to its own individual class. I decided to use scopes because once created they are available to use in other circumstances and not solely for use with package.
 
 The naming convention for the scopes can be set in the `config/builder.php` if you publish the file. By default, the keyword used by each scope is `Where`.
 
@@ -39,13 +39,45 @@ e.g. if the sort field is value is `rating` **LaravelSearchBuilder** will look f
   use App/Hotel;
   use briantweed/laravel-search-builder;
   
-  public function index(Request $request)
+  class HotelController
   {
-    $hotels = (new SearchBuilder(new Hotel, $request))->apply()
-    return view('index', [
-      'hotels' => $hotels
-    ]);
+  
+    public function index(Request $request)
+    {
+      $hotels = (new SearchBuilder(new Hotel, $request))->apply()
+      return view('index', [
+        'hotels' => $hotels
+      ]);
+    }
+    
   }
 ```
 
-*Hotel Model
+*Hotel Model*
+```php
+
+  class Hotel
+  {
+    public function scopeWhereLocation($query, $value)
+    {
+      return $query->where('location', '+', $value);
+    }
+    
+    public function scopeWhereRating($query, $value)
+    {
+      return $query->where('rating', '=', $value);
+    }
+    
+    public function scopeByLocation($query, $direction = 'asc')
+    {
+    		return $query->orderBy('location', $direction);
+    }
+    
+    public function scopeByRating($query, $direction = 'asc')
+    {
+    		return $query->orderBy('rating', $direction);
+    }
+    
+    
+  }
+```
