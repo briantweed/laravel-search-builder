@@ -19,6 +19,12 @@ You can also set the a field to sort the query by and the order. The field name 
 
 e.g. if the sort field is value is `rating` **LaravelSearchBuilder** will look for a method called `scopeByRating()`.
 
+
+If you want to filter by a field on a realted model you can by listing the form field name as `model__field`. The related model separator can be changed from `__` in the `config/builder.php` file. The scope should be added to the related model class.
+
+Note: if using the id field of a related model add the model name to the scope query e.g. `$query->where('related.id', '=', $value);`
+
+
 ---
 
 *Form*
