@@ -20,7 +20,7 @@ Include `briantweed/laravel-search-builder` in you controller. Initialise by inc
 
 ### How it works
 
-**LaravelSearchBuilder** uses each field name from the submitted form request to create a scope method name. If it matches an existing scope model, that scope is added to the query builder. I have seen other solutions where each filter name corresponds to its own individual class. I decided to use scopes because once created they are available to use in other circumstances and not solely for use with package.
+**LaravelSearchBuilder** uses each form field name to create a scope method name. If it matches a scope name, its added to the query builder. I have seen other solutions where each filter name corresponds to its own individual class. I decided to use scopes because once created they are available to use in other circumstances and not solely for use with package.
 
 The naming convention for the scopes can be set in the `config/builder.php` if you publish the file. By default, the keyword used by each scope is `Where`.
 
