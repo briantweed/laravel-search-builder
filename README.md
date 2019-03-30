@@ -6,21 +6,22 @@
 
 ### Installation
 
-```
+```powershell
 composer require "briantweed/laravel-search-builder"
 ```
 
 Once installed you can publish the `config/builder.php` file using the command:
-```
- php artisan vendor:publish --provider="briantweed\LaravelSearchBuilder\LaravelSearchBuilderServiceProvider"
+```powershell
+php artisan vendor:publish --provider="briantweed\LaravelSearchBuilder\LaravelSearchBuilderServiceProvider"
 ```
 or
-```
- php artisan vendor:publish --tag="builder"
+```powershell
+php artisan vendor:publish --tag="builder"
 ```
 
+<br>
 
-### How to use
+### How to Use
 
 Initialise the SearchBuilder class by passing an instance of the model you're running the query on and the request:
 
