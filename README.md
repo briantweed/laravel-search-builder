@@ -22,10 +22,13 @@ or
 
 ### How to use
 
-Include `briantweed/laravel-search-builder` in you controller. Initialise by including an instance of the model you're running the query on and the request:
+Initialise the SearchBuilder class by passing an instance of the model you're running the query on and the request:
 
 ```php
-  $results = (new SearchBuilder(new Model, $request))->apply()
+public function index(Request $request)
+{
+    $results = (new SearchBuilder(new Model, $request))->apply();
+}
 ```
 
 
