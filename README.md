@@ -51,8 +51,11 @@ The `sort` value needs to be the same as the sorting form field name in order fo
 
 Finally the `related_table_separator` is used when filtering by fields from related models. The naming convention for this is the realted model name, followed by the `related_table_separator` and the related model field name. For example `location__name`.
 
+<br>
 
 ---
+
+### Example Usage
 
 *Form*
 ```html 
