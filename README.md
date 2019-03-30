@@ -3,11 +3,22 @@
 *Filter a model collection based on form fields using existing model scope methods*
 
 ---
+
+### Installation
+
 ```
 composer require "briantweed/laravel-search-builder"
 ```
 
- ------ (work in progress) ------
+Once installed you can publish the `config/builder.php` file using the command:
+```
+ php artisan vendor:publish --provider="briantweed\LaravelSearchBuilder\LaravelSearchBuilderServiceProvider"
+```
+or
+```
+ php artisan vendor:publish --tag="builder"
+```
+
 
 ### How to use
 
