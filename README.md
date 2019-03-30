@@ -60,58 +60,57 @@ Finally the `related_table_separator` is used when filtering by fields from rela
 *Form*
 ```html 
 <form>
-  <input type="text" name="location" value="" />
-  <input type="text" name="rating" value="" />
-  <select name="sort">
-    <option value="location">Location</option>
-    <option value="rating">Rating</option>
-  </select>
-  <input type="submit" value="submit" />
+    <input type="text" name="location" value="" />
+    <input type="text" name="rating" value="" />
+    <select name="sort">
+        <option value="location">Location</option>
+        <option value="rating">Rating</option>
+    </select>
+    <input type="submit" value="submit" />
 </form>
 ```
 
 *Controller*
 ```php 
-  use App/Model;
-  use briantweed/laravel-search-builder;
-  
-  class ModelController
-  {
-  
+use App/Model;
+use briantweed/laravel-search-builder;
+
+class ModelController
+{
+
     public function index(Request $request)
     {
-      $results = (new SearchBuilder(new Model, $request))->apply()
-      return view('index', [
-        'results' => $results
-      ]);
+        $results = (new SearchBuilder(new Model, $request))->apply()
+        return view('index', [
+            'results' => $results 
+        ]);
     }
-    
-  }
+
+}
 ```
 
 *Model*
 ```php
-
-  class Model
-  {
+class Model
+{
     public function scopeWhereLocation($query, $value)
     {
-      return $query->where('location', '=', $value);
+        return $query->where('location', '=', $value);
     }
-    
+
     public function scopeWhereRating($query, $value)
     {
-      return $query->where('rating', '>=', $value);
+        return $query->where('rating', '>=', $value);
     }
-    
+
     public function scopeByLocation($query, $direction = 'asc')
     {
-    		return $query->orderBy('location', $direction);
+        return $query->orderBy('location', $direction);
     }
-    
+
     public function scopeByRating($query, $direction = 'desc')
     {
-    		return $query->orderBy('rating', $direction);
+        return $query->orderBy('rating', $direction);
     }
-  }
+}
 ```
