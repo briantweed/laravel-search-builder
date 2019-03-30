@@ -4,23 +4,23 @@
 
 Filter forms can get messy. Checking which fields have selected, piecing together query string snippets; and just when you've got everything working along comes another handful of fields to filter on. The code can get really messy, really quickly. One solution I've seen is to have each filter correspond to a class containing the desired query string. While this works well, the solution I've tried to implement uses one of Laravel's existing features - scopes.
 
-**LaravelSearchBuilder** takes each form field name, finds the corresponding model scope and adds it to the query builder.
+**LaravelSearchBuilder** takes each form field name, finds the corresponding model scope and adds it to the query builder. And that's it. As long as the naming conventions are followed and the scope exists, the filters will be automatically applied when required.
 
 <br/>
 
 ### Installation
 
-```powershell
+```
 composer require "briantweed/laravel-search-builder"
 ```
 <br>
 
-Once installed you can publish the `config/builder.php` file using the command:
-```powershell
+Once installed you can publish the `config/builder.php` file by referencing the provider:
+```
 php artisan vendor:publish --provider="briantweed\LaravelSearchBuilder\LaravelSearchBuilderServiceProvider"
 ```
-or
-```powershell
+or via the tag:
+```
 php artisan vendor:publish --tag="builder"
 ```
 
@@ -37,23 +37,19 @@ public function index(Request $request)
 }
 ```
 
+<br>
 
-### How it works
+### Naming Convention
 
+The `config/builder.php` contains several keywords and values that are used by **LaravelSearchBuilder** to determine the scope method names.
 
+By default the `where_scope` value is `where` and should be used when naming any scope that you want **LaravelSearchBuilder** to use. For example, for a form field with the name `rating` **LaravelSearchBuilder** will look for a scope called `scopeWhereRating`.
 
-The naming convention for the scopes can be set in the `config/builder.php` if you publish the file. By default, the keyword used by each scope is `Where`.
+Similarly, the `sort_scope` default value is `by` and should be used when naming any scope used for sorting the query. **LaravelSearchBuilder** will look for a scope called `scopeByRating`.
 
-e.g. for a form field with the name `rating` **LaravelSearchBuilder** will look for a method called `scopeWhereRating()`.
+The `sort` value needs to be the same as the sorting form field name in order for  **LaravelSearchBuilder** to recognise it as such. The same applied to the `order` value.
 
-You can also set the a field to sort the query by and the order. The field name for both sort and orderby are set in the `config/builder.php` file. The keyword for sorting scopes is `By`. The default values in the `config/builder.php` are `sort` and `order`. These need to be the name of the form fields.
-
-e.g. if the sort field is value is `rating` **LaravelSearchBuilder** will look for a method called `scopeByRating()`.
-
-
-If you want to filter by a field on a realted model you can by listing the form field name as `model__field`. The related model separator can be changed from `__` in the `config/builder.php` file. The scope should be added to the related model class.
-
-Note: if using the id field of a related model add the model name to the scope query e.g. `$query->where('related.id', '=', $value);`
+Finally the `related_table_separator` is used when filtering by fields from related models. The naming convention for this is the realted model name, followed by the `related_table_separator` and the related model field name. For example `location__name`.
 
 
 ---
