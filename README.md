@@ -1,6 +1,11 @@
 # laravel-search-builder
 
-*Filter a model collection based on form fields using existing model scope methods*
+*Automatically create and apply a search query to a collection built using model scope methods*
+
+Filter forms can get messy. Checking which fields have been used, piecing together query snippets, and just when you've got everything working along comes another handful of fields to filter on. The code can get really messy, really quickly. One solution I've seen is to have each filter correspond to a class containing the desired query string. While this works well, the solution I've tried to implement uses one of Laravel's existing features - scopes.
+
+**LaravelSearchBuilder** takes each form field name, finds the corresponding model scope and adds it to the query builder.
+
 <br/>
 
 ### Installation
@@ -35,7 +40,7 @@ public function index(Request $request)
 
 ### How it works
 
-**LaravelSearchBuilder** uses each form field name to create a scope method name. If it matches a scope name, its added to the query builder. I have seen other solutions where each filter name corresponds to its own individual class. I decided to use scopes because once created they are available to use in other circumstances and not solely for use with package.
+
 
 The naming convention for the scopes can be set in the `config/builder.php` if you publish the file. By default, the keyword used by each scope is `Where`.
 
