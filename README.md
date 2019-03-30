@@ -7,6 +7,15 @@
 composer require "briantweed/laravel-search-builder"
 ```
 
+### How to use
+
+Include `briantweed/laravel-search-builder` in you controller. Initialse by including an instance of the model you're running the query on and the request:
+
+```php
+  $results = (new SearchBuilder(new Model, $request))->apply()
+```
+
+
 ### How it works (work in progress)
 
 **LaravelSearchBuilder** uses each field name from the submitted form request to create a scope method name. If it matches an existing scope model, that scope is added to the query builder. I have seen other solutions where each filter name corresponds to its own individual class. I decided to use scopes because once created they are available to use in other circumstances and not solely for use with package.
@@ -50,7 +59,7 @@ Note: if using the id field of a related model add the model name to the scope q
   
     public function index(Request $request)
     {
-      $results = (new SearchBuilder(new Hotel, $request))->apply()
+      $results = (new SearchBuilder(new Model, $request))->apply()
       return view('index', [
         'results' => $results
       ]);
