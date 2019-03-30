@@ -18,3 +18,34 @@ e.g. for a form field with the name `rating` **LaravelSearchBuilder** will look 
 You can also set the a field to sort the query by and the order. The field name for both sort and orderby are set in the `config/builder.php` file. The keyword for sorting scopes is `By`. The default values in the `config/builder.php` are `sort` and `order`. These need to be the name of the form fields.
 
 e.g. if the sort field is value is `rating` **LaravelSearchBuilder** will look for a method called `scopeByRating()`.
+
+---
+
+*index.php*
+```html 
+<form>
+  <input type="text" name="location" value="" />
+  <input type="text" name="rating" value="" />
+  <select name="sort">
+    <option value="location">Location</option>
+    <option value="rating">Rating</option>
+  </select>
+  <input type="submit" value="submit" />
+</form>
+```
+
+*HotelController.php*
+```php 
+  use App/Hotel;
+  use briantweed/laravel-search-builder;
+  
+  public function index(Request $request)
+  {
+    $hotels = (new SearchBuilder(new Hotel, $request))->apply()
+    return view('index', [
+      'hotels' => $hotels
+    ]);
+  }
+```
+
+*Hotel Model
