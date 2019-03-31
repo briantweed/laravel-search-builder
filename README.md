@@ -1,6 +1,6 @@
 <h1> <img src="https://image.flaticon.com/icons/svg/1461/1461628.svg" width="50"/> Percolator </h1>
 
-*An automatic bridge between you filter form and your model scopes*
+*A package to automatically build query strings based on form filters, using model scopes*
 
 Applying filter forms to database queries can get messy. Checking which fields have been selected, piecing together query string snippets; and just when you've got everything working along comes another handful of fields to filter on. The code can get really messy, really quickly. One solution I've seen is to have each filter correspond to a class containing the desired query string. While this works well, the solution I've tried to implement uses one of Laravel's existing features - scopes.
 
