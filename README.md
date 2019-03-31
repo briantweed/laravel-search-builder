@@ -35,12 +35,13 @@ use briantweed\Percolator\Percolator;
 ```
 
 
-Initialise it by passing an instance of the model you're running the query on and the request:
+Initialise it by passing an instance of the model you're running the query on and the request. Call the `apply()` method to build the query, then use `get()` or `paginate()` to build the collection. 
 
 ```php
 public function index(Request $request)
 {
-    $results = (new Percolator(new Model, $request))->apply();
+    $results = (new Percolator(new Model, $request))->apply()
+        ->paginate();
 }
 ```
 
