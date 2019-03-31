@@ -15,8 +15,8 @@ class PercolatorServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '/config/percolator.php' => config_path('builder.php'),
-        ], 'builder');
+            __DIR__ . '/config/percolator.php' => config_path('percolator.php'),
+        ], 'percolator');
     }
 
     /**
