@@ -24,7 +24,7 @@ use briantweed\Percolator;
 ```
 
 
-Initialise it by passing an instance of the model you're running the query on and the request. Call the `apply()` method to build the query, then use `get()` or `paginate()` to build the collection. 
+Initialise it by passing an instance of the model you're running the query on and the request. Call the `apply()` method to build the query, then use `get()` or `paginate()` to return the collection. 
 
 ```php
 public function index(Request $request)
