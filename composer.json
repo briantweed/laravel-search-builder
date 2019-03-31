@@ -1,5 +1,5 @@
 {
-    "name": "briantweed/laravel-search-builder",
+    "name": "briantweed/percolator",
     "description": "search query builder using model scopes",
     "type": "package",
     "license": "MIT",
@@ -9,23 +9,23 @@
             "email": "brtweed@outlook.com"
         }
     ],
-    "homepage": "https://github.com/briantweed/laravel-search-builder",
-    "keywords": ["Laravel", "LaravelSearchBuilder"],
+    "homepage": "https://github.com/briantweed/percolator",
+    "keywords": ["Laravel"],
     "require": {
         "illuminate/support": "~5"
     },
     "autoload": {
         "psr-4": {
-            "briantweed\\LaravelSearchBuilder\\": "src/"
+            "briantweed\\Percolator\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "briantweed\\LaravelSearchBuilder\\LaravelSearchBuilderServiceProvider"
+                "briantweed\\Percolator\\PercolatorServiceProvider"
             ],
             "aliases": {
-                "LaravelSearchBuilder": "briantweed\\LaravelSearchBuilder\\Facades\\LaravelSearchBuilder"
+                "LaravelSearchBuilder": "briantweed\\Percolator\\Facades\\Percolator"
             }
         }
     },
