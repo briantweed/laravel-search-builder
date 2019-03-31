@@ -20,7 +20,7 @@ composer require "briantweed/percolator"
 Include the Percolator class
 
 ```php
-use briantweed\Percolator\Percolator;
+use briantweed\Percolator;
 ```
 
 
@@ -79,7 +79,7 @@ Finally the `related_table_separator` is used when filtering by fields from rela
 *Controller*
 ```php 
 use App/Model;
-use briantweed\Percolator\Percolator;
+use briantweed\Percolator;
 
 class ModelController
 {
