@@ -40,7 +40,7 @@ public function index(Request $request)
 
 The `config/percolator.php` file contains several keywords that are used to determine the scope method names.
 
-If you want to make changes to any of the keywords you can publish the `config/percolator.php` file vai the provider:
+If you want to make changes you can publish the `config/percolator.php` file via the provider:
 ```
 php artisan vendor:publish --provider="briantweed\Percolator\PercolatorServiceProvider"
 ```
