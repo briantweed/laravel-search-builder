@@ -22,10 +22,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "briantweed\\Percolator\\PercolatorServiceProvider"
+                "briantweed\\PercolatorServiceProvider"
             ],
             "aliases": {
-                "Percolator": "briantweed\\Percolator\\Facades\\Percolator"
+                "Percolator": "briantweed\\Facades\\Percolator"
             }
         }
     },
