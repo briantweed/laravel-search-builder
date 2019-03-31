@@ -1,6 +1,6 @@
 <?php
 
-namespace briantweed\LaravelSearchBuilder;
+namespace briantweed\Percolator;
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
