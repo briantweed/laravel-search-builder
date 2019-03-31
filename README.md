@@ -50,12 +50,15 @@ php artisan vendor:publish --tag="percolator"
 ```
 
 By default the `where_scope` value is `where` and should be used when naming any scope that you want **Percolator** to use. For example, for a form field with the name `rating` **Percolator** will look for a scope called `scopeWhereRating`.
+```php
+public function scopeWhereRating($query, $value)
+```
 
 Similarly, the `sort_scope` default value is `by` and **Percolator** will look for a scope called `scopeByRating`.
 
 The `sort` value needs to be the same as the sorting form field name in order for  **Percolator** to recognise it as such. The same applies to the `order` value. Rememer to include the order by parameter on each `scopeBy` method and to include a default direction.
 ```php
- public function scopeByRating($query, $order = 'desc')
+public function scopeByRating($query, $order = 'desc')
 ```
 
 Finally the `related_table_separator` is used when filtering by fields from related models. The naming convention for this is the realted model name, followed by the `related_table_separator` and the related model field name. For example `location__name`.
