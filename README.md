@@ -53,7 +53,10 @@ By default the `where_scope` value is `where` and should be used when naming any
 
 Similarly, the `sort_scope` default value is `by` and **Percolator** will look for a scope called `scopeByRating`.
 
-The `sort` value needs to be the same as the sorting form field name in order for  **Percolator** to recognise it as such. The same applies to the `order` value.
+The `sort` value needs to be the same as the sorting form field name in order for  **Percolator** to recognise it as such. The same applies to the `order` value. Rememer to include the order by parameter on each `scopeBy` method and to include a default direction.
+```php
+ public function scopeByRating($query, $order = 'desc')
+```
 
 Finally the `related_table_separator` is used when filtering by fields from related models. The naming convention for this is the realted model name, followed by the `related_table_separator` and the related model field name. For example `location__name`.
 
@@ -109,14 +112,22 @@ class Model
         return $query->where('rating', '>=', $value);
     }
 
-    public function scopeByLocation($query, $direction = 'asc')
+    /**
+     * Include a parameter for the order by value.
+     * If part of the filter form it will be passed to the scope.
+     */
+    public function scopeByLocation($query, $order = 'asc')
     {
-        return $query->orderBy('location', $direction);
+        return $query->orderBy('location', $order);
     }
 
-    public function scopeByRating($query, $direction = 'desc')
+    /**
+     * Include a parameter for the order by value.
+     * If part of the filter form it will be passed to the scope.
+     */
+    public function scopeByRating($query, $order = 'desc')
     {
-        return $query->orderBy('rating', $direction);
+        return $query->orderBy('rating', $order);
     }
 }
 ```
