@@ -25,7 +25,7 @@
                 "briantweed\\Percolator\\PercolatorServiceProvider"
             ],
             "aliases": {
-                "LaravelSearchBuilder": "briantweed\\Percolator\\Facades\\Percolator"
+                "Percolator": "briantweed\\Percolator\\Facades\\Percolator"
             }
         }
     },

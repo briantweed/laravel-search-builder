@@ -40,7 +40,7 @@ Initialise it by passing an instance of the model you're running the query on an
 ```php
 public function index(Request $request)
 {
-    $results = (new SearchBuilder(new Model, $request))->apply();
+    $results = (new Percolator(new Model, $request))->apply();
 }
 ```
 
