@@ -17,21 +17,21 @@ composer require "briantweed/laravel-search-builder"
 
 Once installed you can publish the `config/builder.php` file by referencing the provider:
 ```
-php artisan vendor:publish --provider="briantweed\LaravelSearchBuilder\LaravelSearchBuilderServiceProvider"
+php artisan vendor:publish --provider="briantweed\Percolator\PercolatorServiceProvider"
 ```
 or via the tag:
 ```
-php artisan vendor:publish --tag="builder"
+php artisan vendor:publish --tag="percolator"
 ```
 
 <br>
 
 ### How to Use
 
-Include the SearchBuilder class
+Include the Percolator class
 
 ```php
-use briantweed\LaravelSearchBuilder\SearchBuilder;
+use briantweed\Percolator\Percolator;
 ```
 
 
@@ -87,7 +87,7 @@ class ModelController
 
     public function index(Request $request)
     {
-        $results = (new SearchBuilder(new Model, $request))->apply()
+        $results = (new Percolator(new Model, $request))->apply()
         return view('index', [
             'results' => $results 
         ]);
