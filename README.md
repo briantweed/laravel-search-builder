@@ -53,7 +53,7 @@ By default the `where_scope` value is `where` and should be used when naming any
 
 Similarly, the `sort_scope` default value is `by` and **Percolator** will look for a scope called `scopeByRating`.
 
-The `sort` value needs to be the same as the sorting form field name in order for  **Percolator** to recognise it as such. The same applied to the `order` value.
+The `sort` value needs to be the same as the sorting form field name in order for  **Percolator** to recognise it as such. The same applies to the `order` value.
 
 Finally the `related_table_separator` is used when filtering by fields from related models. The naming convention for this is the realted model name, followed by the `related_table_separator` and the related model field name. For example `location__name`.
 
