@@ -1,6 +1,6 @@
 <?php
 
-namespace briantweed\Percolator;
+namespace briantweed;
 
 use Illuminate\Support\ServiceProvider;
 

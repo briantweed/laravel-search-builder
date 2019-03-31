@@ -1,10 +1,10 @@
 <?php
 
-namespace briantweed\Percolator;
+namespace briantweed;
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\{percolator, Model};
+use Illuminate\Database\Eloquent\{Builder, Model};
 
 
 /**
@@ -47,9 +47,9 @@ class Percolator
      * Add fields, orderBy and sort direction.
      *
      * @since 1.0.0
-     * @return percolator
+     * @return Builder
      */
-    public function apply(): percolator
+    public function apply(): Builder
     {
         $this->addFieldsToQuery();
         $this->addOrderByToQuery();
