@@ -11,7 +11,7 @@ Applying filter forms to database queries can get messy. Checking which fields h
 ### Installation
 
 ```
-composer require "briantweed/laravel-search-builder"
+composer require "briantweed/percolator"
 ```
 <br>
 
@@ -80,7 +80,7 @@ Finally the `related_table_separator` is used when filtering by fields from rela
 *Controller*
 ```php 
 use App/Model;
-use briantweed/laravel-search-builder;
+use briantweed/Percolator;
 
 class ModelController
 {
