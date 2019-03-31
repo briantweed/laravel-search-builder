@@ -84,7 +84,7 @@ Finally the `related_table_separator` is used when filtering by fields from rela
 
 *Controller*
 ```php 
-use App/Model;
+use App\Model;
 use briantweed\Percolator;
 
 class ModelController
