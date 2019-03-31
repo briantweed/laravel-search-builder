@@ -28,7 +28,7 @@ class PercolatorServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(
             __DIR__.'/config/percolator.php',
-            'builder'
+            'percolator'
         );
 
         $this->app->singleton(Percolator::class);
