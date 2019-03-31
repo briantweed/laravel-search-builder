@@ -4,16 +4,16 @@ namespace briantweed\Percolator;
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\{Builder, Model};
+use Illuminate\Database\Eloquent\{percolator, Model};
 
 
 /**
  * Class Percolator.
 
- * @package App\Builders
+ * @package App\percolators
  * @author briantweed
  * @version 1.0.2
- * @link config/builder.php
+ * @link config/percolator.php
  *
  */
 class Percolator
@@ -47,9 +47,9 @@ class Percolator
      * Add fields, orderBy and sort direction.
      *
      * @since 1.0.0
-     * @return Builder
+     * @return percolator
      */
-    public function apply(): Builder
+    public function apply(): percolator
     {
         $this->addFieldsToQuery();
         $this->addOrderByToQuery();
@@ -78,7 +78,7 @@ class Percolator
      */
     private function setOrderBy(): void
     {
-        $this->orderBy = array_key_exists(config('builder.order'), $this->fields) ? $this->fields[config('builder.order')] : null;
+        $this->orderBy = array_key_exists(config('percolator.order'), $this->fields) ? $this->fields[config('percolator.order')] : null;
     }
 
 
@@ -90,7 +90,7 @@ class Percolator
      */
     private function setSort(): void
     {
-        $this->sort = array_key_exists(config('builder.sort'), $this->fields) ? $this->fields[config('builder.sort')] : null;
+        $this->sort = array_key_exists(config('percolator.sort'), $this->fields) ? $this->fields[config('percolator.sort')] : null;
     }
 
 
@@ -108,7 +108,7 @@ class Percolator
         {
             if (isset($value))
             {
-                if (strpos($field, config('builder.related_table_separator')) !== false) {
+                if (strpos($field, config('percolator.related_table_separator')) !== false) {
                     $this->addRelatedScope($field, $value);
                 }
                 else {
@@ -129,10 +129,10 @@ class Percolator
     {
         if ($this->sort)
         {
-            $scopeMethod = 'scope' . ucwords(config('builder.sort_scope')) . ucwords($this->sort);
+            $scopeMethod = 'scope' . ucwords(config('percolator.sort_scope')) . ucwords($this->sort);
             if (method_exists($this->model, $scopeMethod))
             {
-                $scopeName = config('builder.sort_scope') . $this->sort;
+                $scopeName = config('percolator.sort_scope') . $this->sort;
                 if ($this->orderBy) {
                     $this->query->$scopeName($this->orderBy);
                 }
@@ -155,9 +155,9 @@ class Percolator
      */
     private function addRelatedScope(string $field, string $value): void
     {
-        list($model, $scope) = explode(config('builder.related_table_separator'), $field);
+        list($model, $scope) = explode(config('percolator.related_table_separator'), $field);
         $this->query->whereHas($model, function ($query) use($scope, $value) {
-            $scopeName = ucwords(config('builder.where_scope')) . ucwords(Str::camel($scope));
+            $scopeName = ucwords(config('percolator.where_scope')) . ucwords(Str::camel($scope));
             $query->$scopeName($value);
         });
     }
@@ -173,9 +173,9 @@ class Percolator
      */
     private function addModelScope(string $field, string $value): void
     {
-        $scopeMethod = 'scope' . ucwords(config('builder.where_scope')) . ucwords(Str::camel($field));
+        $scopeMethod = 'scope' . ucwords(config('percolator.where_scope')) . ucwords(Str::camel($field));
         if (method_exists($this->model, $scopeMethod)) {
-            $scopeName = config('builder.where_scope') . $field;
+            $scopeName = config('percolator.where_scope') . $field;
             $this->query->$scopeName($value);
         }
     }
