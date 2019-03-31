@@ -78,7 +78,7 @@ class Percolator
      */
     private function setOrderBy(): void
     {
-        $this->orderBy = array_key_exists(config('percolator.order'), $this->fields) ? $this->fields[config('percolator.order')] : null;
+        $this->orderBy = array_key_exists(config('percolator.order_field'), $this->fields) ? $this->fields[config('percolator.order_field')] : null;
     }
 
 
@@ -90,7 +90,7 @@ class Percolator
      */
     private function setSort(): void
     {
-        $this->sort = array_key_exists(config('percolator.sort'), $this->fields) ? $this->fields[config('percolator.sort')] : null;
+        $this->sort = array_key_exists(config('percolator.sort_field'), $this->fields) ? $this->fields[config('percolator.sort_field')] : null;
     }
 
 
