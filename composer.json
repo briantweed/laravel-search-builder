@@ -1,6 +1,6 @@
 {
     "name": "briantweed/percolator",
-    "description": "search query builder using model scopes",
+    "description": "Laravel package to automatically build and apply filter queries from existing model scopes",
     "type": "package",
     "license": "MIT",
     "authors": [
