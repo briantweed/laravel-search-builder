@@ -1,4 +1,4 @@
-# Percolator
+<h1> <img src="https://image.flaticon.com/icons/svg/1461/1461628.svg" width="50"/> Percolator </h1>
 
 *An automatic bridge between you filter form and your model scopes*
 
