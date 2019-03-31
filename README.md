@@ -49,7 +49,7 @@ public function index(Request $request)
 
 ### Naming Convention
 
-The `config/builder.php` contains several keywords and values that are used by **Percolator** to determine the scope method names.
+The `config/builder.php` file contains several keywords that are used to determine the scope method names.
 
 By default the `where_scope` value is `where` and should be used when naming any scope that you want **Percolator** to use. For example, for a form field with the name `rating` **Percolator** will look for a scope called `scopeWhereRating`.
 
@@ -88,7 +88,7 @@ class ModelController
 
     public function index(Request $request)
     {
-        $results = (new Percolator(new Model, $request))->apply()
+        $results = (new Percolator(new Model, $request))->apply()->get();
         return view('index', [
             'results' => $results 
         ]);
