@@ -15,17 +15,6 @@ composer require "briantweed/percolator"
 ```
 <br>
 
-Once installed you can publish the `config/builder.php` file by referencing the provider:
-```
-php artisan vendor:publish --provider="briantweed\Percolator\PercolatorServiceProvider"
-```
-or via the tag:
-```
-php artisan vendor:publish --tag="percolator"
-```
-
-<br>
-
 ### How to Use
 
 Include the Percolator class
@@ -49,7 +38,16 @@ public function index(Request $request)
 
 ### Naming Convention
 
-The `config/builder.php` file contains several keywords that are used to determine the scope method names.
+The `config/percolator.php` file contains several keywords that are used to determine the scope method names.
+
+If you want to make changes to any of the keywords you can publish the `config/percolator.php` file vai the provider:
+```
+php artisan vendor:publish --provider="briantweed\Percolator\PercolatorServiceProvider"
+```
+or via the tag:
+```
+php artisan vendor:publish --tag="percolator"
+```
 
 By default the `where_scope` value is `where` and should be used when naming any scope that you want **Percolator** to use. For example, for a form field with the name `rating` **Percolator** will look for a scope called `scopeWhereRating`.
 
