@@ -65,6 +65,23 @@ Finally the `related_table_separator` is used when filtering by fields from rela
 
 <br>
 
+### Sort by related table
+
+While Eloquent has its many virtues it's really awkward to sort by a field in a related table. First the related table needs to be joined to the query, then the orderBy applied to the main query (not inside the subquery).
+It also does not help that there is no Laravel method for listing a model's relationship. The only solution I have is to give each relation a returnable type and to use Reflection
+
+```php
+public function owner(): BelongsTo
+{
+    return $this->belongsTo(Owner::class);
+}
+```
+
+Using Reflection `Percolator` can get the details of the relationship and join the related table. You can then add the `scopeBy` scope to the related table.
+
+
+<br>
+
 ---
 
 ### Example Usage
@@ -115,19 +132,11 @@ class Model
         return $query->where('rating', '>=', $value);
     }
 
-    /**
-     * Include a parameter for the order by value.
-     * If part of the filter form it will be passed to the scope.
-     */
     public function scopeByLocation($query, $order = 'asc')
     {
         return $query->orderBy('location', $order);
     }
 
-    /**
-     * Include a parameter for the order by value.
-     * If part of the filter form it will be passed to the scope.
-     */
     public function scopeByRating($query, $order = 'desc')
     {
         return $query->orderBy('rating', $order);

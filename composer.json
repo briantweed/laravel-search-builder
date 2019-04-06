@@ -1,5 +1,5 @@
 {
-    "name": "briantweed/percolator",
+    "name": "BrianTweed/percolator",
     "description": "Laravel package to automatically build and apply filter queries from existing model scopes",
     "type": "package",
     "license": "MIT",
@@ -16,16 +16,16 @@
     },
     "autoload": {
         "psr-4": {
-            "briantweed\\": "src/"
+            "BrianTweed\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "briantweed\\PercolatorServiceProvider"
+                "BrianTweed\\PercolatorServiceProvider"
             ],
             "aliases": {
-                "Percolator": "briantweed\\Facades\\Percolator"
+                "Percolator": "BrianTweed\\Facades\\Percolator"
             }
         }
     },

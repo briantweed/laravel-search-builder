@@ -1,6 +1,6 @@
 <?php
 
-namespace briantweed;
+namespace BrianTweed;
 
 use Illuminate\Support\ServiceProvider;
 
